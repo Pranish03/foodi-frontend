@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const HeroBanner = () => {
   return (
-    <div className="relative text-white text-[20px] w-full max-w-340 mx-auto rounded-xl overflow-clip">
+    <div className="relative text-white bg-[#E6E9F2] text-[20px] w-full max-w-340 mx-auto rounded-xl overflow-clip">
       <Image
-        src="/banner.svg"
+        src="/bannerimg.svg"
         alt="Hero"
         width={1360}
         height={500}
