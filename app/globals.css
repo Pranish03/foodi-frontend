@@ -8,5 +8,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-urbanist-sans);
+  font-family: var(--font-poppins-sans);
 }

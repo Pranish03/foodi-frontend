@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -83,7 +84,7 @@ const Header = () => {
           />
         )}
 
-        <div className="flex items-center gap-2 text-black">
+        <div className="flex items-center gap-6 text-black">
           <Menu
             showResMenu={showResMenu}
             setShowResMenu={setShowResMenu}

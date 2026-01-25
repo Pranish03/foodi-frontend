@@ -1,9 +1,9 @@
-import { Urbanist } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 
-const urbanist = Urbanist({
-  variable: "--font-urbanist-sans",
+const roboto = Roboto({
+  variable: "--font-roboto-sans",
   subsets: ["latin"],
 });
 
@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${urbanist.variable} antialiased`}>
+      <body className={`${roboto.variable} antialiased`}>
         <Header />
         {children}
       </body>

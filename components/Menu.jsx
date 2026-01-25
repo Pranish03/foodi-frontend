@@ -4,12 +4,13 @@ import { BsChevronDown } from "react-icons/bs";
 
 const data = [
   { id: 1, name: "Home", url: "/" },
+  { id: 2, name: "Menus", url: "/menus" },
   { id: 3, name: "Restaurants", subMenu: true },
 ];
 
 const Menu = ({ showResMenu, setShowResMenu, restaurants }) => {
   return (
-    <ul className="hidden md:flex items-center gap-8 font-semibold text-black text-lg">
+    <ul className="hidden md:flex items-center gap-8 text-black text-lg">
       {data.map((item) => {
         return (
           <React.Fragment key={item.id}>
@@ -23,7 +24,7 @@ const Menu = ({ showResMenu, setShowResMenu, restaurants }) => {
                 <BsChevronDown size={14} />
 
                 {showResMenu && (
-                  <ul className="bg-white absolute top-6 left-0 min-w-62.5 px-1 py-1 text-black shadow-lg">
+                  <ul className="bg-white border border-gray-200 rounded-lg absolute top-7 left-0 min-w-62.5 px-1 py-1 text-black shadow-lg">
                     {/* {restaurants?.map(({ attributes: r, id }) => { */}
                     {restaurants?.map((r) => {
                       return (
