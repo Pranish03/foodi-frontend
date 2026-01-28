@@ -10,16 +10,16 @@ const HeroBanner = () => {
           <h1 className="text-[45px]/12 font-bold text-gray-900 mb-3 y">
             Your favorite food, just a few <br /> clicks away.
           </h1>
-          <p className="text-lg mb-10">
+          <p className="text-lg mb-10 text-gray-900">
             Discover nearby restaurants and get your meal delivered hot and
             fresh.
           </p>
           <div className="flex items-center gap-8">
-            <button className="bg-green-700 hover:bg-green-700/95 text-lg text-white px-4 py-3 rounded-lg cursor-pointer">
+            <button className="bg-green-700 hover:bg-green-700/95 text-lg text-white px-4 py-2.5 rounded-lg cursor-pointer">
               Order now
             </button>
 
-            <button className="flex items-center gap-1 text-lg cursor-pointer">
+            <button className="flex items-center gap-1 text-lg cursor-pointer text-gray-900">
               Learn More
               <FiArrowRight size={18} />
             </button>

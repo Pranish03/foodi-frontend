@@ -79,15 +79,13 @@ const Header = () => {
           />
 
           <Link href="/cart" className="relative cursor-pointer">
-            <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/5 cursor-pointer relative">
-              <FiShoppingBag className="text-[15px] md:text-[24px]" />
-              {/* {cartItems.length > 0 && ( */}
-              <div className="h-3.5 md:h-4.5 min-w-3.5 md:min-w-4.5 rounded-full bg-red-600 absolute top-1 left-5 md:left-7 text-white text-[10px] md:text-[12px] flex justify-center items-center px-0.5 md:px-1.25">
-                {/* {cartItems.length} */}
-                10
-              </div>
-              {/* )} */}
+            <FiShoppingBag className="text-[15px] md:text-[24px] text-gray-900" />
+            {/* {cartItems.length > 0 && ( */}
+            <div className="h-3.5 md:h-4.5 min-w-3.5 md:min-w-4.5 rounded-full bg-red-600 absolute -top-1.5 -right-2.5 text-white text-[10px] md:text-[12px] flex justify-center items-center px-0.5 md:px-1.25">
+              {/* {cartItems.length} */}
+              10
             </div>
+            {/* )} */}
           </Link>
 
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/5 cursor-pointer relative -mr-2">

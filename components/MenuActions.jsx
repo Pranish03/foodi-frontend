@@ -2,12 +2,11 @@
 
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-import ReactMarkdown from "react-markdown";
 import { ToastContainer, toast } from "react-toastify";
-import richTextToMarkdown from "@/utils/richTextToMarkdown";
+import { FiChevronDown } from "react-icons/fi";
 
 export default function MenuActions({ menu }) {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("");
   const [showError, setShowError] = useState(false);
 
   const notify = () => {
@@ -17,37 +16,36 @@ export default function MenuActions({ menu }) {
     });
   };
 
-  const markdown = richTextToMarkdown(menu.description);
-
   return (
     <>
       <ToastContainer />
-
-      {/* Options */}
       <div className="mb-10">
-        <div className="text-md font-semibold mb-2">Select Option</div>
+        <div className="text-md font-semibold mb-2 text-gray-900">
+          Select Option
+        </div>
 
-        <div className="grid grid-cols-2 gap-2">
-          {menu.option?.data?.map((item, i) => (
-            <div
-              key={i}
-              className={`border rounded-md py-3 text-center font-medium
-                ${
-                  item.availiable
-                    ? "cursor-pointer hover:border-black"
-                    : "cursor-not-allowed opacity-40 bg-black/10"
-                }
-                ${selectedOption === item.option ? "border-black" : ""}
-              `}
-              onClick={() => {
-                if (!item.availiable) return;
-                setSelectedOption(item.option);
-                setShowError(false);
-              }}
-            >
-              {item.option}
-            </div>
-          ))}
+        <div className="relative flex items-center">
+          <select
+            value={selectedOption}
+            onChange={(e) => {
+              setSelectedOption(e.target.value);
+              setShowError(false);
+            }}
+            className={`w-full appearance-none border rounded-md py-3 px-3 text-md ${showError ? "border-red-500" : "border-gray-300"}`}
+          >
+            <option value="" disabled>
+              -- Choose an option --
+            </option>
+
+            {menu.option?.data?.map((item, i) => (
+              <option key={i} value={item.option} disabled={!item.availiable}>
+                {item.option} {!item.availiable ? "(Unavailable)" : ""}
+              </option>
+            ))}
+          </select>
+          <span className="absolute right-2.5 text-gray-700">
+            <FiChevronDown size={24} />
+          </span>
         </div>
 
         {showError && (
@@ -56,7 +54,7 @@ export default function MenuActions({ menu }) {
       </div>
 
       <button
-        className="w-full py-4 rounded-full bg-black text-white text-lg"
+        className="bg-green-700 hover:bg-green-700/95 text-lg text-white w-full py-2.5 rounded-lg cursor-pointer flex justify-center items-center gap-2"
         onClick={() => {
           if (!selectedOption) {
             setShowError(true);
@@ -65,15 +63,8 @@ export default function MenuActions({ menu }) {
           notify();
         }}
       >
-        Add to Cart
+        Add to Bag
       </button>
-
-      <div className="mt-10">
-        <h2 className="text-lg font-bold mb-5">Details</h2>
-        <div className="markdown text-md mb-5">
-          <ReactMarkdown>{markdown}</ReactMarkdown>
-        </div>
-      </div>
     </>
   );
 }

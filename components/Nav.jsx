@@ -14,7 +14,7 @@ const Nav = ({
   restaurants,
 }) => {
   return (
-    <ul className="hidden md:flex items-center gap-8 text-black text-lg">
+    <ul className="hidden md:flex items-center gap-8 text-gray-900 text-lg">
       {data.map((item) => {
         return (
           <React.Fragment key={item.id}>
@@ -28,7 +28,7 @@ const Nav = ({
                 <BsChevronDown size={14} />
 
                 {showRestaurantOptions && (
-                  <ul className="bg-white border border-gray-200 rounded-lg absolute top-7 left-0 min-w-62.5 px-1 py-1 text-black shadow-lg">
+                  <ul className="bg-white border border-gray-200 rounded-lg absolute top-7 left-0 min-w-62.5 px-1 py-1 text-gray-900 shadow-lg">
                     {restaurants?.map((r) => {
                       return (
                         <Link
@@ -38,7 +38,7 @@ const Nav = ({
                         >
                           <li className="h-12 flex justify-between items-center px-3 hover:bg-black/3 rounded-md">
                             {r.name}
-                            <span className="opacity-50 text-sm">
+                            <span className="text-white text-sm bg-green-600 h-5 w-5 rounded flex items-center justify-center">
                               {r.menus?.length}
                             </span>
                           </li>
