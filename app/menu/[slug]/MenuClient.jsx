@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { FiChevronDown } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import { addToBag } from "@/store/bagSlice";
 
 export default function MenuClient({ menu }) {
   const [selectedOption, setSelectedOption] = useState("");
@@ -15,6 +17,8 @@ export default function MenuClient({ menu }) {
       theme: "dark",
     });
   };
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -59,6 +63,14 @@ export default function MenuClient({ menu }) {
           if (!selectedOption) {
             setShowError(true);
             return;
+          } else {
+            dispatch(
+              addToBag({
+                ...menu?.data?.[0],
+                selectedOption,
+                oneQuatityPrice: menu.price,
+              }),
+            );
           }
           notify();
         }}

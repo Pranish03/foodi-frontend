@@ -4,14 +4,14 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Wrapper from "./Wrapper";
+import { useSelector } from "react-redux";
 import { FiShoppingBag } from "react-icons/fi";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import { fetchDataFromApi } from "@/utils/api";
+import Wrapper from "./Wrapper";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
-// import { useSelector } from "react-redux";
 
 const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
@@ -22,7 +22,7 @@ const Header = () => {
 
   const [restaurants, setRestaurants] = useState(null);
 
-  //   const { cartItems } = useSelector((state) => state.cart);
+  const { bagItems } = useSelector((state) => state.bag);
 
   const controlNavbar = () => {
     if (window.scrollY > 200) {
@@ -80,12 +80,11 @@ const Header = () => {
 
           <Link href="/cart" className="relative cursor-pointer">
             <FiShoppingBag className="text-[15px] md:text-[24px] text-gray-900" />
-            {/* {cartItems.length > 0 && ( */}
-            <div className="h-3.5 md:h-4.5 min-w-3.5 md:min-w-4.5 rounded-full bg-red-600 absolute -top-1.5 -right-2.5 text-white text-[10px] md:text-[12px] flex justify-center items-center px-0.5 md:px-1.25">
-              {/* {cartItems.length} */}
-              10
-            </div>
-            {/* )} */}
+            {bagItems.length > 0 && (
+              <div className="h-3.5 md:h-4.5 min-w-3.5 md:min-w-4.5 rounded-full bg-red-600 absolute -top-1.5 -right-2.5 text-white text-[10px] md:text-[12px] flex justify-center items-center px-0.5 md:px-1.25">
+                {bagItems.length}
+              </div>
+            )}
           </Link>
 
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/5 cursor-pointer relative -mr-2">
