@@ -2,10 +2,10 @@ import ReactMarkdown from "react-markdown";
 import Wrapper from "@/components/Wrapper";
 import MenuDetailsCarousel from "@/components/MenuDetailsCarousel";
 import RelatedMenus from "@/components/RelatedMenus";
-import MenuActions from "@/components/MenuActions";
 import { fetchDataFromApi } from "@/utils/api";
 import { getDiscountedPricePercentage } from "@/utils/helper";
 import richTextToMarkdown from "@/utils/richTextToMarkdown";
+import MenuClient from "./MenuClient";
 
 export default async function MenuPage({ params }) {
   const { slug } = await params;
@@ -64,7 +64,7 @@ export default async function MenuPage({ params }) {
 
             <p className="text-gray-700 text-sm mb-10">incl. of taxes</p>
 
-            <MenuActions menu={menu} />
+            <MenuClient menu={menu} />
 
             <div className="mt-10">
               <h2 className="text-lg font-bold mb-5 text-gray-900">

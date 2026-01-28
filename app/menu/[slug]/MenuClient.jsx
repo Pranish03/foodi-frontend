@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { FiChevronDown } from "react-icons/fi";
 
-export default function MenuActions({ menu }) {
+export default function MenuClient({ menu }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [showError, setShowError] = useState(false);
 
