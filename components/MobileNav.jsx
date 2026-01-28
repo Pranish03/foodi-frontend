@@ -4,13 +4,13 @@ import { BsChevronDown } from "react-icons/bs";
 
 const data = [
   { id: 1, name: "Home", url: "/" },
-  { id: 3, name: "Restaurants", subMenu: true },
+  { id: 3, name: "Restaurants", options: true },
 ];
 
-const MenuMobile = ({
-  showResMenu,
-  setShowResMenu,
-  setMobileMenu,
+const MobileNav = ({
+  showRestaurantOptions,
+  setShowRestaurantOptions,
+  setMobileNav,
   restaurants,
 }) => {
   return (
@@ -18,35 +18,30 @@ const MenuMobile = ({
       {data.map((item) => {
         return (
           <React.Fragment key={item.id}>
-            {!!item?.subMenu ? (
+            {!!item?.options ? (
               <li
                 className="cursor-pointer py-4 px-5 border-b flex flex-col relative"
-                onClick={() => setShowResMenu(!showResMenu)}
+                onClick={() => setShowRestaurantOptions(!showRestaurantOptions)}
               >
                 <div className="flex justify-between items-center">
                   {item.name}
                   <BsChevronDown size={14} />
                 </div>
 
-                {showResMenu && (
+                {showRestaurantOptions && (
                   <ul className="bg-black/5 -mx-5 mt-4 -mb-4">
-                    {/* {restaurants?.map(({ attributes: r, id }) => { */}
                     {restaurants?.map((r) => {
                       return (
                         <Link
                           key={r.id}
-                          // href={`/category/${c.slug}`}
-                          href={`/restaurant/${r.id}`}
-                          onClick={() => {
-                            setShowResMenu(false);
-                            setMobileMenu(false);
-                          }}
+                          href={`/restaurant/${r.slug}`}
+                          onClick={() => setShowRestaurantOptions(false)}
                         >
                           <li className="py-4 px-8 border-t flex justify-between">
                             {r.name}
-                            {/* <span className="opacity-50 text-sm">
-                              {`(${r.products.data.length})`}
-                            </span> */}
+                            <span className="opacity-50 text-sm">
+                              {r.menus?.length}
+                            </span>
                           </li>
                         </Link>
                       );
@@ -56,7 +51,7 @@ const MenuMobile = ({
               </li>
             ) : (
               <li className="py-4 px-5 border-b">
-                <Link href={item?.url} onClick={() => setMobileMenu(false)}>
+                <Link href={item?.url} onClick={() => setMobileNav(false)}>
                   {item.name}
                 </Link>
               </li>
@@ -68,4 +63,4 @@ const MenuMobile = ({
   );
 };
 
-export default MenuMobile;
+export default MobileNav;

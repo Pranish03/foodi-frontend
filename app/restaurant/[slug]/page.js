@@ -3,8 +3,8 @@
 import { useParams } from "next/navigation";
 
 const Restaurant = () => {
-  const { id } = useParams();
-  return <div>Restaurant {id}</div>;
+  const { slug } = useParams();
+  return <div>Restaurant {slug}</div>;
 };
 
 export default Restaurant;

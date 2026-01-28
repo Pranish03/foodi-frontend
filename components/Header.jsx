@@ -3,32 +3,30 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Wrapper from "./Wrapper";
-import Menu from "./Menu";
-import MenuMobile from "./MenuMobile";
 import Image from "next/image";
-// import { fetchDataFromApi } from "@/utils/api";
-
+import Wrapper from "./Wrapper";
 import { FiShoppingBag } from "react-icons/fi";
-import { BsCart } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
+import { fetchDataFromApi } from "@/utils/api";
+import Nav from "./Nav";
+import MobileNav from "./MobileNav";
 // import { useSelector } from "react-redux";
 
 const Header = () => {
-  const [mobileMenu, setMobileMenu] = useState(false);
-  const [showResMenu, setShowResMenu] = useState(false);
+  const [mobileNav, setMobileNav] = useState(false);
+  const [showRestaurantOptions, setShowRestaurantOptions] = useState(false);
 
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  //   const [resaurant, setRestaurant] = useState(null);
+  const [restaurants, setRestaurants] = useState(null);
 
   //   const { cartItems } = useSelector((state) => state.cart);
 
   const controlNavbar = () => {
     if (window.scrollY > 200) {
-      if (window.scrollY > lastScrollY && !mobileMenu) {
+      if (window.scrollY > lastScrollY && !mobileNav) {
         setShow("-translate-y-[80px]");
       } else {
         setShow("shadow-sm");
@@ -46,19 +44,14 @@ const Header = () => {
     };
   }, [lastScrollY]);
 
-  //   const fetchCategories = async () => {
-  //     const { data } = await fetchDataFromApi("/api/categories?populate=*");
-  //     setCategories(data);
-  //   };
+  const fetchRestaurants = async () => {
+    const { data } = await fetchDataFromApi("/api/restaurants?populate=*");
+    setRestaurants(data);
+  };
 
-  //   useEffect( () => {
-  //     fetchCategories();
-  //   }, []);
-
-  const restaurants = [
-    { id: 1, name: "Restaurant 1", doc_count: 11 },
-    { id: 2, name: "Restaurant 2", doc_count: 8 },
-  ];
+  useEffect(() => {
+    fetchRestaurants();
+  }, []);
 
   return (
     <header
@@ -66,28 +59,22 @@ const Header = () => {
     >
       <Wrapper className="h-15 flex justify-between items-center">
         <Link href="/">
-          <Image
-            src="/foodi-logo.svg"
-            alt=""
-            width={110}
-            height={100}
-            // className="w-10 md:w-15"
-          />
+          <Image src="/foodi-logo.svg" alt="" width={110} height={100} />
         </Link>
 
-        {mobileMenu && (
-          <MenuMobile
-            showResMenu={showResMenu}
-            setShowResMenu={setShowResMenu}
-            setMobileMenu={setMobileMenu}
+        {mobileNav && (
+          <MobileNav
+            showRestaurantOptions={showRestaurantOptions}
+            setShowRestaurantOptions={setShowRestaurantOptions}
+            setMobileNav={setMobileNav}
             restaurants={restaurants}
           />
         )}
 
         <div className="flex items-center gap-6 text-black">
-          <Menu
-            showResMenu={showResMenu}
-            setShowResMenu={setShowResMenu}
+          <Nav
+            showRestaurantOptions={showRestaurantOptions}
+            setShowRestaurantOptions={setShowRestaurantOptions}
             restaurants={restaurants}
           />
 
@@ -104,15 +91,15 @@ const Header = () => {
           </Link>
 
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/5 cursor-pointer relative -mr-2">
-            {mobileMenu ? (
+            {mobileNav ? (
               <VscChromeClose
                 className="text-[16px]"
-                onClick={() => setMobileMenu(false)}
+                onClick={() => setMobileNav(false)}
               />
             ) : (
               <BiMenuAltRight
                 className="text-[20px]"
-                onClick={() => setMobileMenu(true)}
+                onClick={() => setMobileNav(true)}
               />
             )}
           </div>

@@ -51,13 +51,13 @@ const Footer = () => {
 
             <div className="flex flex-col gap-3">
               <div className="font-oswald font-medium uppercase text-sm">
-                About nike
+                About us
               </div>
               <div className="text-sm text-white/50 hover:text-white cursor-pointer">
-                News
+                Teams
               </div>
               <div className="text-sm text-white/50 hover:text-white cursor-pointer">
-                Careers
+                Partners
               </div>
               <div className="text-sm text-white/50 hover:text-white cursor-pointer">
                 Investors

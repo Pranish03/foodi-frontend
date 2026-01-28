@@ -8,7 +8,7 @@ const HeroBanner = () => {
       <div className="bg-green-800/30 rounded-lg flex items-center justify-between p-10 mt-4">
         <div>
           <h1 className="text-[45px]/12 font-bold text-gray-900 mb-3 y">
-            Your favorite food, just a few <br /> clicks away
+            Your favorite food, just a few <br /> clicks away.
           </h1>
           <p className="text-lg mb-10">
             Discover nearby restaurants and get your meal delivered hot and
