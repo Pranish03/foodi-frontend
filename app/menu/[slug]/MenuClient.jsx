@@ -63,15 +63,16 @@ export default function MenuClient({ menu }) {
           if (!selectedOption) {
             setShowError(true);
             return;
-          } else {
-            dispatch(
-              addToBag({
-                ...menu?.data?.[0],
-                selectedOption,
-                oneQuatityPrice: menu.price,
-              }),
-            );
           }
+
+          dispatch(
+            addToBag({
+              ...menu,
+              selectedOption,
+              oneQuantityPrice: menu.price,
+            }),
+          );
+
           notify();
         }}
       >

@@ -1,40 +1,63 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  bagItems: [],
+};
+
 export const bagSlice = createSlice({
   name: "bag",
-  initialState: {
-    bagItems: [],
-  },
+  initialState,
+
   reducers: {
     addToBag: (state, action) => {
-      const item = state.bagItems.find((p) => p.id === action.payload.id);
-
+      const item = state.bagItems.find(
+        (m) =>
+          m.id === action.payload.id &&
+          m.selectedOption === action.payload.selectedOption,
+      );
       if (item) {
-        item.quantity++;
-        item.attributes.price = item.oneQuantityPrice * item.quantity;
+        item.quantity += 1;
+        item.price = item.oneQuantityPrice * item.quantity;
       } else {
-        state.bagItems.push({ ...action.payload, quantity: 1 });
+        state.bagItems.push({
+          ...action.payload,
+          quantity: 1,
+          price: action.payload.oneQuantityPrice,
+        });
       }
     },
 
     updateBag: (state, action) => {
-      state.bagItems = state.bagItems.map((p) => {
-        if (p.id === action.payload.id) {
-          if (action.payload.key === "quantity") {
-            p.attributes.price = p.oneQuantityPrice * action.payload.val;
-          }
-          return { ...p, [action.payload.key]: action.payload.val };
-        }
-        return p;
-      });
+      const { id, selectedOption, key, val } = action.payload;
+      const item = state.bagItems.find(
+        (m) => m.id === id && m.selectedOption === selectedOption,
+      );
+      if (!item) return;
+      if (key === "quantity") {
+        item.quantity = val;
+        item.price = item.oneQuantityPrice * val;
+      } else {
+        item[key] = val;
+      }
     },
 
     removeFromBag: (state, action) => {
-      state.bagItems = state.bagItems.filter((p) => p.id !== action.payload.id);
+      const { id, selectedOption } = action.payload;
+      state.bagItems = state.bagItems.filter(
+        (m) => !(m.id === id && m.selectedOption === selectedOption),
+      );
+    },
+
+    clearBag: (state) => {
+      state.bagItems = [];
     },
   },
 });
 
-export const { addToBag, updateBag, removeFromBag } = bagSlice.actions;
+export const { addToBag, updateBag, removeFromBag, clearBag } =
+  bagSlice.actions;
 
 export default bagSlice.reducer;
+
+export const selectTotalBagItems = (state) =>
+  state.bag.bagItems.reduce((sum, item) => sum + item.quantity, 0);
