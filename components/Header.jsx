@@ -1,31 +1,28 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import { FiShoppingBag } from "react-icons/fi";
+import { FiShoppingBag, FiSearch } from "react-icons/fi";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import { fetchDataFromApi } from "@/utils/api";
+import { selectTotalBagItems } from "@/store/bagSlice";
 import Wrapper from "./Wrapper";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
-import { selectTotalBagItems } from "@/store/bagSlice";
 
 const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [showRestaurantOptions, setShowRestaurantOptions] = useState(false);
-
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
-
   const [restaurants, setRestaurants] = useState(null);
 
   const totalItems = useSelector(selectTotalBagItems);
 
-  const controlNavbar = () => {
+  const controlNavbar = useCallback(() => {
     if (window.scrollY > 200) {
       if (window.scrollY > lastScrollY && !mobileNav) {
         setShow("-translate-y-[80px]");
@@ -36,21 +33,20 @@ const Header = () => {
       setShow("translate-y-0");
     }
     setLastScrollY(window.scrollY);
-  };
+  }, [lastScrollY, mobileNav]);
 
   useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
     return () => {
       window.removeEventListener("scroll", controlNavbar);
     };
-  }, [lastScrollY]);
-
-  const fetchRestaurants = async () => {
-    const { data } = await fetchDataFromApi("/api/restaurants?populate=*");
-    setRestaurants(data);
-  };
+  }, [controlNavbar]);
 
   useEffect(() => {
+    const fetchRestaurants = async () => {
+      const { data } = await fetchDataFromApi("/api/restaurants?populate=*");
+      setRestaurants(data);
+    };
     fetchRestaurants();
   }, []);
 
@@ -72,14 +68,18 @@ const Header = () => {
           />
         )}
 
-        <div className="flex items-center gap-6 text-black">
-          <Nav
-            showRestaurantOptions={showRestaurantOptions}
-            setShowRestaurantOptions={setShowRestaurantOptions}
-            restaurants={restaurants}
-          />
+        <Nav
+          showRestaurantOptions={showRestaurantOptions}
+          setShowRestaurantOptions={setShowRestaurantOptions}
+          restaurants={restaurants}
+        />
 
-          <Link href="/cart" className="relative cursor-pointer">
+        <div className="flex items-center gap-6 text-black">
+          <div className="cursor-pointer">
+            <FiSearch className="text-[15px] md:text-[24px] text-gray-900" />
+          </div>
+
+          <Link href="/bag" className="relative cursor-pointer">
             <FiShoppingBag className="text-[15px] md:text-[24px] text-gray-900" />
             {totalItems > 0 && (
               <div className="h-3.5 md:h-4.5 min-w-3.5 md:min-w-4.5 rounded-full bg-red-600 absolute -top-1.5 -right-2.5 text-white text-[10px] md:text-[12px] flex justify-center items-center px-0.5 md:px-1.25">

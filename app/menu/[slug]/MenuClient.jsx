@@ -13,7 +13,7 @@ export default function MenuClient({ menu }) {
 
   const notify = () => {
     toast.success("Success. Check your cart!", {
-      position: "bottom-right",
+      position: "bottom-center",
       theme: "dark",
     });
   };
