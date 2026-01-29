@@ -18,32 +18,33 @@ const BagItem = ({ menu }) => {
   };
 
   return (
-    <div className="flex gap-5 py-5 border-b">
+    <div className="flex gap-5 py-5 border-b border-gray-300">
       <div className="w-24 h-24 relative">
         <Image
           src={menu.thumbnail.url}
           alt={menu.name}
-          fill
-          className="object-contain"
+          width={90}
+          height={150}
+          className="rounded-lg"
         />
       </div>
 
       <div className="flex-1">
         <div className="flex justify-between">
-          <h3 className="text-xl font-semibold">{menu.name}</h3>
-          <span className="font-bold">Rs. {menu.price}</span>
+          <h3 className="text-xl font-semibold text-gray-900">{menu.name}</h3>
+          <span className="font-bold text-gray-900">Rs. {menu.price}</span>
         </div>
 
-        <p className="text-sm text-black/50">{menu.subtitle}</p>
+        <p className="text-gray-700">{menu.subtitle}</p>
 
         <div className="flex justify-between items-center mt-4">
-          <div className="flex gap-6 text-sm">
+          <div className="flex gap-6">
             <div>
-              <span className="font-semibold">Option:</span>
+              <span className="font-semibold text-gray-900">Option:</span>
               <select
                 value={menu.selectedOption}
                 onChange={(e) => updateBagItem(e, "selectedOption")}
-                className="ml-2"
+                className="ml-2 bg-gray-200 px-2 py-1 rounded-sm text-gray-700"
               >
                 {menu.option?.data.map((opt, i) => (
                   <option key={i} value={opt.option} disabled={!opt.availiable}>
@@ -54,11 +55,11 @@ const BagItem = ({ menu }) => {
             </div>
 
             <div>
-              <span className="font-semibold">Qty:</span>
+              <span className="font-semibold text-gray-900">Qty:</span>
               <select
                 value={menu.quantity}
                 onChange={(e) => updateBagItem(e, "quantity")}
-                className="ml-2"
+                className="ml-2 bg-gray-200 px-2 py-1 rounded-sm text-gray-700"
               >
                 {Array.from({ length: 10 }, (_, i) => i + 1).map((q) => (
                   <option key={q} value={q}>
@@ -78,7 +79,7 @@ const BagItem = ({ menu }) => {
                 }),
               )
             }
-            className="cursor-pointer text-xl text-black/50 hover:text-black"
+            className="cursor-pointer text-xl text-gray-700 hover:text-gray-900"
           />
         </div>
       </div>

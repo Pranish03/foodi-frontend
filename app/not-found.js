@@ -1,18 +1,20 @@
 import Wrapper from "@/components/Wrapper";
 import Link from "next/link";
 
-const Failed = () => {
+export default function NotFound({ params }) {
   return (
     <div className="min-h-162.5 flex items-center">
       <Wrapper>
         <div className="max-w-150 rounded-lg p-5 mx-auto flex flex-col text-center">
-          <div className="text-2xl font-bold text-gray-900">
-            Payment failed!
+          <div className="text-4xl font-bold text-gray-900">404</div>
+          <div className="text-lg font-bold mt-2 text-gray-900">
+            Oops, page not found
           </div>
-          <div className="mt-5 text-gray-700">
-            For any food related query, drop an email to
+          <div className="my-5 text-gray-700">
+            This page you are looking for may have been moved, deleted or
+            <br />
+            possibly never existed.
           </div>
-          <div className="underline text-gray-700 mb-5">foodi@gmail.com</div>
 
           <Link
             href="/"
@@ -24,6 +26,4 @@ const Failed = () => {
       </Wrapper>
     </div>
   );
-};
-
-export default Failed;
+}

@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import Wrapper from "@/components/Wrapper";
 import MenuDetailsCarousel from "@/components/MenuDetailsCarousel";
@@ -6,6 +7,7 @@ import { fetchDataFromApi } from "@/utils/api";
 import { getDiscountedPricePercentage } from "@/utils/helper";
 import richTextToMarkdown from "@/utils/richTextToMarkdown";
 import MenuClient from "./MenuClient";
+import BreadCrumbs from "@/components/BreadCrumbs";
 
 export default async function MenuPage({ params }) {
   const { slug } = await params;
@@ -20,15 +22,23 @@ export default async function MenuPage({ params }) {
 
   const menu = menuRes?.data?.[0];
 
-  if (!menu) {
-    return <div className="py-20 text-center">Menu not found</div>;
-  }
+  if (!menu) notFound();
 
   const markdown = richTextToMarkdown(menu.description);
+
+  const breadCrumbArr = [
+    {
+      title: menu.restaurant.name,
+      link: `/restaurant/${menu.restaurant.slug}`,
+    },
+    { title: menu.slug },
+  ];
 
   return (
     <div className="w-full md:py-20">
       <Wrapper>
+        <BreadCrumbs items={breadCrumbArr} />
+
         <div className="flex flex-col lg:flex-row md:px-10 gap-12.5 lg:gap-25">
           <div className="w-full md:w-auto flex-[1.5] max-w-125 mx-auto">
             <MenuDetailsCarousel images={menu.image} />
@@ -62,7 +72,7 @@ export default async function MenuPage({ params }) {
               )}
             </div>
 
-            <p className="text-gray-700 text-sm mb-10">incl. of taxes</p>
+            <p className="text-gray-700 mb-10">incl. of taxes</p>
 
             <MenuClient menu={menu} />
 

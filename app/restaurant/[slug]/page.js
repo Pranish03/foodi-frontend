@@ -1,6 +1,7 @@
 import Wrapper from "@/components/Wrapper";
 import RestaurantClient from "./RestaurantClient";
 import { fetchDataFromApi } from "@/utils/api";
+import BreadCrumbs from "@/components/BreadCrumbs";
 
 const maxResult = 4;
 
@@ -22,6 +23,7 @@ export default async function RestaurantPage({ params }) {
   return (
     <div className="w-full md:py-20 relative">
       <Wrapper>
+        <BreadCrumbs items={[{ title: restaurant.name }]} />
         <div className="text-center max-w-200 mx-auto mt-8 md:mt-0">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight text-gray-900">
             {restaurant.name}
