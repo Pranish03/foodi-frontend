@@ -3,7 +3,6 @@
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import Image from "next/image";
 
 const MenuDetailsCarousel = ({ images }) => {
   return (
@@ -16,7 +15,12 @@ const MenuDetailsCarousel = ({ images }) => {
         className="menuCarousel"
       >
         {images?.map((img) => (
-          <img key={img.id} src={img.url} alt={img.name} />
+          <img
+            key={img.id}
+            src={img.url}
+            alt={img.name}
+            className="rounded-lg"
+          />
         ))}
       </Carousel>
     </div>

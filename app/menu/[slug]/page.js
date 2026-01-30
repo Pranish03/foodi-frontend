@@ -39,29 +39,29 @@ export default async function MenuPage({ params }) {
       <Wrapper>
         <BreadCrumbs items={breadCrumbArr} />
 
-        <div className="flex flex-col lg:flex-row md:px-10 gap-12.5 lg:gap-25">
+        <div className="flex flex-col lg:flex-row md:px-10 gap-5 lg:gap-25">
           <div className="w-full md:w-auto flex-[1.5] max-w-125 mx-auto">
             <MenuDetailsCarousel images={menu.image} />
           </div>
 
           <div className="flex-1 py-3">
-            <h1 className="text-[34px] font-semibold mb-2 text-gray-900">
+            <h1 className="md:text-4xl text-3xl font-semibold md:mb-2 mb-1 text-gray-900">
               {menu.name}
             </h1>
-            <p className="text-lg font-semibold mb-5 text-gray-900">
+            <p className="md:text-xl text-lg font-semibold md:mb-5 mb-4 text-gray-900">
               {menu.subtitle}
             </p>
 
             <div className="flex items-center">
-              <p className="mr-2 text-lg font-semibold text-gray-900">
+              <p className="mr-2 md:text-lg text-base font-semibold text-gray-900">
                 Rs. {menu.price}
               </p>
               {menu.original_price && (
                 <>
-                  <p className="text-base line-through text-gray-700">
+                  <p className="md:text-base text-sm line-through text-gray-700">
                     Rs. {menu.original_price}
                   </p>
-                  <p className="ml-auto text-green-600">
+                  <p className="ml-auto md:text-base text-sm text-green-600">
                     {getDiscountedPricePercentage(
                       menu.original_price,
                       menu.price,
@@ -72,15 +72,17 @@ export default async function MenuPage({ params }) {
               )}
             </div>
 
-            <p className="text-gray-700 mb-10">incl. of taxes</p>
+            <p className="text-gray-700 md:text-base text-sm md:mb-10 mb-4">
+              incl. of taxes
+            </p>
 
             <MenuClient menu={menu} />
 
-            <div className="mt-10">
-              <h2 className="text-lg font-bold mb-5 text-gray-900">
+            <div className="md:mt-10 mt-6">
+              <h2 className="md:text-xl text-lg font-bold md:mb-5 mb-2 text-gray-900">
                 Menu Details
               </h2>
-              <div className="markdown text-md mb-5 text-justify text-gray-800">
+              <div className="markdown md:text-lg text-base md:mb-5 mb-2 text-justify text-gray-800">
                 <ReactMarkdown>{markdown}</ReactMarkdown>
               </div>
             </div>

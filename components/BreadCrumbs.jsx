@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const BreadCrumbs = ({ items }) => {
   return (
-    <nav className="text-base text-gray-700 flex gap-1 mb-10">
+    <nav className="sm:text-base text-sm text-gray-700 flex gap-1 md:mt-0 mt-4 md:mb-10 mb-7">
       <Link href="/" className="hover:underline">
         Home
       </Link>

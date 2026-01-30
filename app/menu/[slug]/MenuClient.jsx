@@ -23,8 +23,8 @@ export default function MenuClient({ menu }) {
   return (
     <>
       <ToastContainer />
-      <div className="mb-10">
-        <div className="text-md font-semibold mb-2 text-gray-900">
+      <div className="md:mb-10 mb-4">
+        <div className="md:text-xl text-lg font-semibold md:mb-2 mb-1.5 text-gray-900">
           Select Option
         </div>
 
@@ -35,7 +35,7 @@ export default function MenuClient({ menu }) {
               setSelectedOption(e.target.value);
               setShowError(false);
             }}
-            className={`w-full appearance-none border rounded-md py-3 px-3 text-md ${showError ? "border-red-500" : "border-gray-300"}`}
+            className={`w-full appearance-none border rounded-md py-3 px-3 md:text-lg text-base ${showError ? "border-red-500" : "border-gray-300"}`}
           >
             <option value="" disabled>
               -- Choose an option --
@@ -58,7 +58,7 @@ export default function MenuClient({ menu }) {
       </div>
 
       <button
-        className="bg-green-700 hover:bg-green-700/95 text-lg text-white w-full py-2.5 rounded-lg cursor-pointer flex justify-center items-center gap-2"
+        className="bg-green-700 hover:bg-green-700/95 md:text-lg text-base text-white w-full py-2.5 rounded-lg cursor-pointer flex justify-center items-center gap-2"
         onClick={() => {
           if (!selectedOption) {
             setShowError(true);
