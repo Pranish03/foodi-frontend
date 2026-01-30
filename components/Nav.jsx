@@ -39,8 +39,7 @@ const Nav = ({
                           <li className="h-12 flex justify-between items-center px-3 hover:bg-black/3 rounded-md">
                             {r.name}
                             <span className="text-gray-700">
-                              ({r.menus?.length}{" "}
-                              {r.menus?.length > 1 ? "menus" : "menu"})
+                              {r.menus?.length}
                             </span>
                           </li>
                         </Link>

@@ -10,59 +10,59 @@ const Footer = () => {
       <Wrapper className="flex justify-between flex-col md:flex-row gap-12.5 md:gap-0">
         <div className="flex gap-12.5 md:gap-18.75 lg:gap-25 flex-col md:flex-row">
           <div className="flex flex-col gap-3 shrink-0">
-            <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
+            <div className="font-oswald font-medium uppercase text-base cursor-pointer">
               Find a restaurant
             </div>
-            <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
+            <div className="font-oswald font-medium uppercase text-base cursor-pointer">
               become a partner
             </div>
-            <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
+            <div className="font-oswald font-medium uppercase text-base cursor-pointer">
               sign up for email
             </div>
-            <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
+            <div className="font-oswald font-medium uppercase text-base cursor-pointer">
               send us feedback
             </div>
-            <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
+            <div className="font-oswald font-medium uppercase text-base cursor-pointer">
               discounts
             </div>
           </div>
 
           <div className="flex gap-12.5 md:gap-18.75 lg:gap-25 shrink-0">
             <div className="flex flex-col gap-3">
-              <div className="font-oswald font-medium uppercase text-sm">
+              <div className="font-oswald font-medium uppercase text-base">
                 get help
               </div>
-              <div className="text-sm text-white/50 hover:text-white cursor-pointer">
+              <div className="text-base text-white/50 hover:text-white cursor-pointer">
                 Order Status
               </div>
-              <div className="text-sm text-white/50 hover:text-white cursor-pointer">
+              <div className="text-base text-white/50 hover:text-white cursor-pointer">
                 Delivery
               </div>
-              <div className="text-sm text-white/50 hover:text-white cursor-pointer">
+              <div className="text-base text-white/50 hover:text-white cursor-pointer">
                 Returns
               </div>
-              <div className="text-sm text-white/50 hover:text-white cursor-pointer">
+              <div className="text-base text-white/50 hover:text-white cursor-pointer">
                 Payment Options
               </div>
-              <div className="text-sm text-white/50 hover:text-white cursor-pointer">
+              <div className="text-base text-white/50 hover:text-white cursor-pointer">
                 Contact Us
               </div>
             </div>
 
             <div className="flex flex-col gap-3">
-              <div className="font-oswald font-medium uppercase text-sm">
+              <div className="font-oswald font-medium uppercase text-base">
                 About us
               </div>
-              <div className="text-sm text-white/50 hover:text-white cursor-pointer">
+              <div className="text-base text-white/50 hover:text-white cursor-pointer">
                 Teams
               </div>
-              <div className="text-sm text-white/50 hover:text-white cursor-pointer">
+              <div className="text-base text-white/50 hover:text-white cursor-pointer">
                 Partners
               </div>
-              <div className="text-sm text-white/50 hover:text-white cursor-pointer">
+              <div className="text-base text-white/50 hover:text-white cursor-pointer">
                 Investors
               </div>
-              <div className="text-sm text-white/50 hover:text-white cursor-pointer">
+              <div className="text-base text-white/50 hover:text-white cursor-pointer">
                 Sustainability
               </div>
             </div>
@@ -91,20 +91,20 @@ const Footer = () => {
         </div>
       </Wrapper>
       <Wrapper className="flex justify-between mt-10 flex-col md:flex-row gap-2.5 md:gap-0">
-        <div className="text-[12px] text-white/50 hover:text-white cursor-pointer text-center md:text-left">
+        <div className="text-sm text-white/50 hover:text-white cursor-pointer text-center md:text-left">
           © 2026 Food-I, Inc. All Rights Reserved
         </div>
         <div className="flex gap-2 md:gap-5 text-center md:text-left flex-wrap justify-center">
-          <div className="text-[12px] text-white/50 hover:text-white cursor-pointer">
+          <div className="text-sm text-white/50 hover:text-white cursor-pointer">
             Guides
           </div>
-          <div className="text-[12px] text-white/50 hover:text-white cursor-pointer">
+          <div className="text-sm text-white/50 hover:text-white cursor-pointer">
             Terms of Sale
           </div>
-          <div className="text-[12px] text-white/50 hover:text-white cursor-pointer">
+          <div className="text-sm text-white/50 hover:text-white cursor-pointer">
             Terms of Use
           </div>
-          <div className="text-[12px] text-white/50 hover:text-white cursor-pointer">
+          <div className="text-sm text-white/50 hover:text-white cursor-pointer">
             Privacy Policy
           </div>
         </div>

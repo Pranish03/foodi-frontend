@@ -16,9 +16,9 @@ const MenuCard = ({ data }) => {
         className="rounded-lg mb-4"
       />
 
-      <h2 className="text-lg font-bold text-gray-900">{data.name}</h2>
+      <h2 className="text-xl font-bold text-gray-900 truncate">{data.name}</h2>
 
-      <p className="truncate text-gray-700">
+      <p className="truncate text-base text-gray-700">
         {data.description[0]?.children[0]?.text}
       </p>
 
@@ -28,7 +28,7 @@ const MenuCard = ({ data }) => {
             Rs. {data.original_price}
           </span>
 
-          <div className="flex items-center justify-between">
+          <div className="flex sm:flex-row flex-col sm:items-center items-start sm:gap-0 gap-1 justify-between">
             <span className="mr-2 text-lg font-semibold text-gray-900">
               Rs. {data.price}
             </span>
