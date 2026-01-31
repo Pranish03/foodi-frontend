@@ -39,20 +39,20 @@ export default function BagPage() {
   if (bagItems.length === 0) {
     return (
       <Wrapper>
-        <div className="md:py-20 flex flex-col items-center text-center">
+        <div className="md:pt-20 md:pb-20 pt-5 pb-10 flex flex-col items-center text-center">
           <Image src="/empty-bag.jpg" alt="" width={350} height={350} />
-          <h2 className="text-xl font-bold my-2 text-gray-900">
+          <h2 className="md:text-2xl text-xl font-bold my-2 text-gray-900">
             Your bag is empty
           </h2>
 
-          <p className="text-gray-700 mb-7">
+          <p className="text-gray-700 mb-7 md:text-lg text-base">
             Looks like you have not added anything in your bag.
             <br />
             Go ahead and explore some menus.
           </p>
           <Link
             href="/"
-            className="bg-green-700 hover:bg-green-700/95 text-lg text-white px-4 py-2.5 rounded-lg cursor-pointer"
+            className="bg-green-700 hover:bg-green-700/95 md:text-lg text-base text-white px-4 py-2.5 rounded-lg cursor-pointer"
           >
             Continue Ordering
           </Link>
@@ -66,13 +66,13 @@ export default function BagPage() {
       <Wrapper>
         <BreadCrumbs items={[{ title: "Bag" }]} />
 
-        <h1 className="text-center text-3xl font-semibold mb-10 text-gray-900">
+        <h1 className="text-center md:text-3xl text-2xl font-semibold md:mb-10 mb-5 text-gray-900">
           Menu Bag
         </h1>
 
-        <div className="flex flex-col lg:flex-row gap-12">
+        <div className="flex flex-col lg:flex-row gap-12 md:mb-0 mb-10">
           <div className="flex-2">
-            <h1 className="mb-4 font-semibold text-xl text-gray-900">
+            <h1 className="mb-4 font-semibold md:text-2xl text-xl text-gray-900">
               Bag Items
             </h1>
 
@@ -82,15 +82,15 @@ export default function BagPage() {
           </div>
 
           <div className="flex-1">
-            <h1 className="mb-4 font-semibold text-xl text-gray-900">
+            <h1 className="mb-4 font-semibold md:text-2xl text-xl text-gray-900">
               Summary
             </h1>
             <div className="p-5 bg-black/5 rounded-lg">
-              <div className="flex justify-between text-lg font-medium text-gray-900 border-b border-gray-300 pb-3 mb-5">
+              <div className="flex justify-between md:text-xl text-lg font-medium text-gray-900 border-b border-gray-300 pb-3 mb-5">
                 <span>Subtotal</span>
                 <span>Rs. {subTotal}</span>
               </div>
-              <p className="text-gray-700 pb-5">
+              <p className="text-gray-700 pb-5 md:text-lg text-base">
                 The subtotal is the total cost of your order before discounts.
                 It includes taxes and duties, but does not include delivery
                 charges or international transaction fees.

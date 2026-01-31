@@ -52,9 +52,9 @@ const Header = () => {
     <header
       className={`w-full h-15 md:h-20 bg-white flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}`}
     >
-      <Wrapper className="h-15 flex justify-between items-center">
-        <Link href="/">
-          <Image src="/foodi-logo.svg" alt="" width={110} height={100} />
+      <Wrapper className="h-15 flex justify-between items-center gap-4">
+        <Link href="/" className="md:min-w-27.5 min-w-20">
+          <Image src="/foodi-logo.svg" alt="" width={110} height={60} />
         </Link>
 
         {mobileNav && (
@@ -80,7 +80,7 @@ const Header = () => {
           <Link href="/bag" className="relative cursor-pointer">
             <FiShoppingBag className="text-[20px] md:text-[24px] text-gray-900" />
             {totalItems > 0 && (
-              <div className="h-3.5 md:h-4.5 min-w-3.5 md:min-w-4.5 rounded-full bg-red-600 absolute -top-1.5 -right-2.5 text-white text-[10px] md:text-[12px] flex justify-center items-center px-0.5 md:px-1.25">
+              <div className="h-3.5 md:h-4.5 min-w-3.5 md:min-w-4.5 rounded-full bg-red-600 absolute md:-top-1.5 -top-1 md:-right-2.5 -right-1.5 text-white text-[10px] md:text-[12px] flex justify-center items-center px-0.5 md:px-1.25">
                 {totalItems}
               </div>
             )}
